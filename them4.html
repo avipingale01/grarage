@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare Garage - Professional Car Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2C3E50;
+            --primary-light: #34495E;
+            --primary-dark: #1A2530;
+            --accent: #E67E22;
+            --accent-light: #F39C12;
+            --dark: #2C3E50;
+            --light: #FDFEFE;
+            --blue: #3498DB;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #FDFEFE, #EBF5FB);
+            color: var(--dark);
+            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-dark);
+        }
+        
+        .page {
+            min-height: 100vh;
+            width: 100%;
+            padding: 0px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .page-content {
+            max-width: 500px;
+            width: 100%;
+            background: var(--light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            animation: fadeIn 0.8s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 2.5rem;
+            box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
+            border: 3px solid var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .logo-text {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        
+        .logo-subtext {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 500;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        h2 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+       .nav-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;   
+  padding: 0px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+nav a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #fff; 
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+
+nav a:hover {
+  color: var(--primary);
+}
+
+
+nav a.active {
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  margin-top: -25px; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+        .hero {
+            text-align: center;
+            padding: 10px 0 20px;
+        }
+        
+        .garage-image {
+            width: 100%;
+            height: 180px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+        
+        .garage-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><rect x="20" y="30" width="60" height="40" stroke="%23E67E22" stroke-width="2" fill="none" /><circle cx="30" cy="70" r="8" stroke="%23E67E22" stroke-width="2" fill="none" /><circle cx="70" cy="70" r="8" stroke="%23E67E22" stroke-width="2" fill="none" /></svg>');
+            background-size: 80px;
+            opacity: 0.1;
+        }
+        
+        .hero h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+        
+        .tagline {
+            color: var(--primary);
+            font-style: italic;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .specialty-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            padding: 8px 15px;
+            background: rgba(44, 62, 80, 0.1);
+            color: var(--primary-dark);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--accent);
+        }
+        
+        .cta-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        .btn {
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
+        }
+        
+        .btn-secondary {
+            background: var(--light);
+            color: var(--primary-dark);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card {
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .service-item {
+            background: var(--light);
+            padding: 15px;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid #EAEDED;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-item:hover {
+            background: #F8F9F9;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            overflow: hidden; 
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            background: #EBF5FB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .service-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        .service-item p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .price {
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .gallery-grid {
+            column-count: 3; 
+            column-gap: 12px;
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 12px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            border-radius: var(--radius);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+        
+        .contact-info {
+            margin-bottom: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #F8F9F9;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            background: #EAEDED;
+        }
+        
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .feedback-rating i{
+            color: var(--accent);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #EAEDED;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn, .review-btn {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            display: block;
+            margin: 0 auto;
+            transition: var(--transition);
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .submit-btn:hover, .review-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(44, 62, 80, 0.4);
+        }
+        
+        .review-btn a {
+            text-decoration: none;
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #F8F9F9;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            border: 1px solid #EAEDED;
+        }
+        
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .decorative-border {
+            height: 8px;
+            background: linear-gradient(to right, var(--primary), var(--accent), var(--primary));
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        
+        .pattern {
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" width="100" height="10"><rect x="5" y="3" width="10" height="4" fill="%232C3E50" /><rect x="25" y="3" width="10" height="4" fill="%232C3E50" /><rect x="45" y="3" width="10" height="4" fill="%232C3E50" /><rect x="65" y="3" width="10" height="4" fill="%232C3E50" /><rect x="85" y="3" width="10" height="4" fill="%232C3E50" /></svg>');
+            background-repeat: repeat-x;
+            opacity: 0.7;
+            margin: 15px 0;
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .scroll-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(44, 62, 80, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .scroll-dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
+        }
+        
+        .share-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .share-option {
+            padding: 20px 15px;
+            border-radius: var(--radius);
+            background: #F8F9F9;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .share-option:hover {
+            background: rgba(52, 152, 219, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .share-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .qr-scanner {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            background: #F8F9F9;
+            border: 1px solid #EAEDED;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 15px;
+        }
+        
+        .copy-link {
+            display: flex;
+            margin: 20px 0;
+        }
+        
+        .copy-link input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #EAEDED;
+            border-radius: var(--radius) 0 0 var(--radius);
+            border-right: none;
+            font-size: 0.9rem;
+        }
+        
+        .copy-link button {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .feedback-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .feedback-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .feedback-name {
+            font-weight: 600;
+        }
+        
+        .feedback-date {
+            font-size: 0.8rem;
+            color: #777;
+        }
+        
+        @media (max-width: 500px) {
+            .page-content {
+                padding: 20px;
+            }
+            
+            .services-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-text {
+                font-size: 1.8rem;
+            }
+            
+            .scroll-indicator {
+                right: 10px;
+            }
+            
+            .nav-container {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="scroll-indicator">
+        <a href="#main" class="scroll-dot active"></a>
+        <a href="#about" class="scroll-dot"></a>
+        <a href="#services" class="scroll-dot"></a>
+        <a href="#gallery" class="scroll-dot"></a>
+        <a href="#testimonials" class="scroll-dot"></a>
+        <a href="#contact" class="scroll-dot"></a>
+        <a href="#location" class="scroll-dot"></a>
+    </div>
+
+   
+    <section id="main" class="page">
+        <div class="page-content">
+            <div class="header">
+                <div class="logo-container">
+                    <div class="logo">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="logo-text">AutoCare Garage</div>
+                    <div class="logo-subtext">Professional Car Services</div>
+                </div>
+            </div>
+            
+            <div class="hero">
+                <div class="garage-image">
+                    Professional Auto Repair & Maintenance
+                </div>
+                
+                <h1>Welcome to AutoCare Garage</h1>
+                <p class="tagline">Your Trusted Auto Service Partner</p>
+                
+                <div class="specialty-badges">
+                    <div class="badge">Car Repair</div>
+                    <div class="badge">Maintenance</div>
+                    <div class="badge">Diagnostics</div>
+                </div>
+                
+                <p>We provide expert automotive services with state-of-the-art equipment and certified technicians. Your vehicle is in good hands with us.</p>
+                
+                <div class="cta-buttons">
+                    <a href="tel:+919876543210" class="btn btn-primary">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                    <a href="https://wa.me/919876512345" class="btn btn-whatsapp">
+                       <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="#services" class="btn btn-secondary">
+                        <i class="fas fa-tools"></i> Our Services
+                    </a>
+                    <a href="#location" class="btn btn-secondary">
+                        <i class="fas fa-map-marker-alt"></i> Directions
+                    </a>
+                </div>
+            </div>
+            
+            <div class="pattern"></div>
+            
+            <div class="social-links">
+                <a href="#" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-google"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="about" class="page">
+        <div class="page-content">
+            <h2>Our Story</h2>
+            
+            <div class="decorative-border"></div>
+            
+            <div class="card">
+                <h3>Expert Technicians</h3>
+                <p>Since 2005, AutoCare Garage has been providing top-quality automotive services with ASE-certified technicians who have over 15 years of experience.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Quality Service</h3>
+                <p>We use only genuine parts and the latest diagnostic equipment to ensure your vehicle receives the best care possible.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Our Promise</h3>
+                <p>We're committed to providing honest, transparent service with fair pricing and a satisfaction guarantee on all our work.</p>
+            </div>
+            
+            <div class="pattern"></div>
+            
+            <h3>Business Hours</h3>
+            <div class="card">
+                <p><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM</p>
+                <p><strong>Saturday:</strong> 9:00 AM - 4:00 PM</p>
+                <p><strong>Sunday:</strong> Closed</p>
+            </div>
+        </div>
+    </section>
+
+ 
+    <section id="services" class="page">
+        <div class="page-content">
+            <h2>Our Services</h2>
+            <p>Comprehensive automotive services for all makes and models</p>
+            
+            <div class="decorative-border"></div>
+            
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <h3>Oil Change</h3>
+                    <p>Complete oil and filter replacement</p>
+                    <div class="price">₹1,499</div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Brake Service</h3>
+                    <p>Brake inspection and pad replacement</p>
+                    <div class="price">₹2,999</div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Engine Repair</h3>
+                    <p>Complete engine diagnostics and repair</p>
+                    <div class="price">₹4,999</div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Battery Replacement</h3>
+                    <p>Battery testing and replacement</p>
+                    <div class="price">₹3,499</div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Tire Service</h3>
+                    <p>Rotation, balancing and replacement</p>
+                    <div class="price">₹999</div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Full Service</h3>
+                    <p>Complete vehicle inspection and service</p>
+                    <div class="price">₹5,999</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Download Price List
+                </a>
+            </div>
+        </div>
+    </section>
+
+  
+    <section id="gallery" class="page">
+        <div class="page-content">
+            <h2>Our Garage</h2>
+            <p>Take a look at our facility and work</p>
+
+            <div class="decorative-border"></div>
+
+            <div class="gallery-grid" id="galleryGrid">
+               <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Car_repair_garage_in_Brastad.jpg" alt="Garage - car on lift"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/PunctureRepairWorkshop.JPG" alt="Roadside tire workshop"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Car_repair_shop.jpg" alt="Vintage car repair shop interior"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Car_tire_closeup_1_2019-01-15.jpg" alt="Tire closeup"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/%271969_Porsche%27_--_Brooklyn_Heights_%28NY%29_Car_Repair_Garage_April_2016_%2826907746046%29.jpg" alt="Car on lift"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Auto_Parts_Store.jpg" alt="Auto parts store shelves"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Car_repair_shop_in_Zabrat_%2889882%29.jpg" alt="Car repair shop exterior"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/View_of_a_Car_Repair_Shop.jpg" alt="View of car repair area"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Atelier_vulcanisation.jpg" alt="Vulcanization workshop"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Tire_repair_shop_in_Zabrat.jpg" alt="Tire repair shop sign"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Two_mechanic_working_on_a_car_engine.jpg" alt="Mechanics working under hood"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/2/22/Mechanic_working.jpg" alt="Mechanic changing brake pad"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/PunctureRepairWorkshop.JPG" alt="Roadside tire workshop"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Car_repair_shop.jpg" alt="Vintage car repair shop interior"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Car_tire_closeup_1_2019-01-15.jpg" alt="Tire closeup"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/%271969_Porsche%27_--_Brooklyn_Heights_%28NY%29_Car_Repair_Garage_April_2016_%2826907746046%29.jpg" alt="Car on lift"></div>
+  <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Auto_Parts_Store.jpg" alt="Auto parts store shelves"></div>
+ 
+
+        </div>
+    </section>
+
+   
+    <section id="testimonials" class="page">
+        <div class="page-content">
+            <h2>Customer Reviews</h2>
+            <p>What our customers say about our service</p>
+            
+            <div class="decorative-border"></div>
+            
+            <div class="card">
+                <div class="feedback-header">
+                    <div class="feedback-avatar">R</div>
+                    <div>
+                        <div class="feedback-name">Rahul Sharma</div>
+                        <div class="feedback-date">October 15, 2023</div>
+                    </div>
+                </div>
+                <div class="feedback-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"The best garage in the city! They fixed my car's transmission issue at a reasonable price. Highly recommended!"</p>
+            </div>
+            
+            <div class="card">
+                <div class="feedback-header">
+                    <div class="feedback-avatar">P</div>
+                    <div>
+                        <div class="feedback-name">Priya Mehta</div>
+                        <div class="feedback-date">September 28, 2023</div>
+                    </div>
+                </div>
+                <div class="feedback-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>"Honest mechanics and great service. They explained everything clearly and didn't try to upsell unnecessary repairs."</p>
+            </div>
+            
+            <div class="card">
+                <div class="feedback-header">
+                    <div class="feedback-avatar">A</div>
+                    <div>
+                        <div class="feedback-name">Amit Kumar</div>
+                        <div class="feedback-date">August 10, 2023</div>
+                    </div>
+                </div>
+                <div class="feedback-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"I've been coming here for years. They always do a great job and stand behind their work. My car has never run better."</p>
+            </div>
+
+            <button class="review-btn"><a href="https://www.google.com/search?q=autocare+garage+reviews">Write Review</a></button>
+        </div>
+    </section>
+
+   
+    <section id="contact" class="page">
+        <div class="page-content">
+            <h2>Contact Us</h2>
+            <p>We'd love to hear from you</p>
+            
+            <div class="decorative-border"></div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Address</h4>
+                        <p>123, Auto Nagar, Industrial Area, Bengaluru - 560022</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+91 98765 43210</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>service@autocaregarage.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4>Working Hours</h4>
+                        <p>Monday - Saturday: 8:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Schedule Service</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <input type="tel" class="form-control" placeholder="Your Phone Number">
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" placeholder="Date">
+            </div>
+            <div class="form-group">
+                <input type="time" class="form-control" placeholder="Time">
+            </div>
+            <div class="form-group">
+                <select class="form-control">
+                    <option>Select Service</option>
+                    <option>Oil Change</option>
+                    <option>Brake Service</option>
+                    <option>Engine Repair</option>
+                    <option>Battery Replacement</option>
+                    <option>Tire Service</option>
+                    <option>Full Service</option>
+                </select>
+            </div>
+            <button class="submit-btn">Schedule Appointment</button>
+        </div>
+    </section>
+
+   
+    <section id="location" class="page">
+        <div class="page-content">
+            <h2>Find Us</h2>
+            <p>Visit our garage location</p>
+            
+            <div class="decorative-border"></div>
+            
+            <div class="gallery-item" style="height: 200px; margin-bottom: 20px;">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.98603572656!2d77.5942771750781!3d12.91699778739402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15c49c040309%3A0x6553433f72187b01!2sIndustrial%20Area%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1697462387657!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+            
+            <div class="card">
+                <h3>Directions</h3>
+                <p>We are located in the Industrial Area, just off the main highway. Look for our large blue sign with the car logo.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Parking</h3>
+                <p>Ample parking available on site. Waiting area with complimentary coffee and WiFi while you wait for your vehicle.</p>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="https://maps.app.goo.gl/example" class="btn btn-primary">
+                    <i class="fas fa-directions"></i> Get Directions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sharing" class="page">
+        <div class="page-content">
+            <h2>Share This Card</h2>
+            <p>Share our digital visiting card with your friends and family.</p>
+            
+            <div class="share-options">
+                <div class="share-option" onclick="shareVia('whatsapp')">
+                    <div class="share-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <p>WhatsApp</p>
+                </div>
+                
+                <div class="share-option" onclick="shareVia('facebook')">
+                    <div class="share-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <p>Facebook</p>
+                </div>
+                
+                <div class="share-option" onclick="shareVia('twitter')">
+                    <div class="share-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <p>Twitter</p>
+                </div>
+                
+                <div class="share-option" onclick="shareVia('email')">
+                    <div class="share-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <p>Email</p>
+                </div>
+            </div>
+            
+            <h3>Scan QR Code</h3>
+            <div class="qr-scanner">
+                <div class="dummy-image" style="width: 150px; height: 150px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                    <img src="imgs/qrcode.png" alt="" width="150px">
+                </div>
+                <p style="margin-top: 10px; text-align: center;">Scan to save our contact</p>
+            </div>
+            
+            <h3>Copy Link</h3>
+            <div class="copy-link">
+                <input type="text" id="profile-link" value="https://autocaregarage.com/digital-card" readonly>
+                <button onclick="copyLink()">Copy</button>
+            </div>
+        </div>
+    </section>
+    
+    <div class="nav-container">
+        <nav>
+            <a href="#main" class="active">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="#about">
+                <i class="fas fa-info-circle"></i>
+            </a>
+            <a href="#services">
+                <i class="fas fa-tools"></i>
+            </a>
+            <a href="#testimonials">
+                <i class="fas fa-star"></i>
+            </a>
+            <a href="#contact">
+                <i class="fas fa-phone"></i>
+            </a>
+            <a href="#location">
+                <i class="fa-solid fa-location-crosshairs"></i>
+            </a>
+            <a href="#sharing">
+                <i class="fa-solid fa-share-from-square"></i>
+            </a>
+        </nav>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('nav a');
+        const scrollDots = document.querySelectorAll('.scroll-dot');
+        
+        function updateActiveStates() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+            
+            scrollDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('href').substring(1) === current) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+        
+        const items = document.querySelectorAll("#galleryGrid .gallery-item");
+        let current = 0;
+
+        function showSet() {
+            items.forEach((item, i) => {
+                item.style.display = (i >= current && i < current + 10) ? "block" : "none";
+            });
+            current = (current + 10) % items.length;
+        }
+
+        showSet();
+        setInterval(showSet, 5000);
+        
+        window.addEventListener('scroll', updateActiveStates);
+        
+        document.querySelectorAll('.submit-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Thank you for your appointment request! We will confirm shortly.');
+            });
+        });
+        
+        function shareVia(platform) {
+            alert(`Sharing via ${platform} would be implemented here`);
+        }
+        
+        function copyLink() {
+            const copyText = document.getElementById("profile-link");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            alert("Link copied to clipboard: " + copyText.value);
+        }
+        
+        window.addEventListener('load', updateActiveStates);
+    </script>
+</body>
+</html>
